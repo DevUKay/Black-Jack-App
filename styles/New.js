@@ -11,12 +11,11 @@
 
 ///////////////////////////
 
-let  firstCard = 10
-let  secondCard = 4;
-let  cards = [ firstCard, secondCard]
-let  sum = firstCard + secondCard
+
+let  cards = [ ]
+let  sum = 0
 let  hasBlackJack = false;
-let  isAlive = true;
+let  isAlive = false;
 let  message = ""
 
 let messageEl = document.getElementById("message-el")
@@ -24,7 +23,24 @@ let sumEl = document.querySelector("#sum-el")
 let cardsEl = document.getElementById("cards-el")
 
 
+function getRandomCard() {
+    let randomNumber = Math.floor( Math.random() * 14)
+    if (randomNumber < 10) {
+        return 10
+    } else if (randomNumber === 1) {
+        return 11
+    } else {
+        return randomNumber
+    }
+}
+
 function startGame() {
+    isAlive = true
+    let firstCard = getRandomCard()
+    let secondCard = getRandomCard()
+    cards = [firstCard, secondCard]
+    sum = firstCard + secondCard
+
     renderGame()
 }
 
@@ -53,7 +69,7 @@ for (let i = 0; i < cards.length; i++) {
 
 function newCard() {
 
-    let card = 2
+    let card = getRandomCard()
     sum += card
     cards.push(card)
     renderGame()
@@ -103,3 +119,18 @@ function newCard() {
 // console.log(totalTime)
 
 ///////////////////////////////////////////////
+
+
+// function rollDice() {
+//     let randomNumber = Math.floor( Math.random() * 6 ) + 1
+//     return randomNumber
+// }
+
+// console.log( rollDice() )
+
+
+// let flooredNumber = Math.floor(5.45632)
+
+// console.log(flooredNumber)
+
+////////////////////////////////////////
